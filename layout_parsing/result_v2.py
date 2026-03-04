@@ -484,18 +484,6 @@ class LayoutParsingResultV2(BaseCVResult, HtmlMixin, XlsxMixin, MarkdownMixin):
                 "-\n",
                 "",
             ).replace("\n", " "),  # 标题
-            "Text": lambda block: block.content.replace("\n", "\n\n"),  # 正文
-            "List": lambda block: block.content.replace("\n\n", "\n").replace(
-                "\n", "\n\n" ), # 列表
-            "Catalog": lambda block: block.content.replace("\n", "  \n"),  # 目录
-            "Table": format_table_func,  # 表格
-            "Table_name": format_text_func,  # 表格标题
-            "Figure": format_image_func,  # 图片
-            "Figure_name": format_text_func,  # 图片标题
-            "Formula": lambda block: f"$${block.content}$$",  # 公式
-            "Model": lambda block: f"**型号：** {block.content}\n\n",
-            "Manufacturer": lambda block: f"**厂家：** {block.content}\n\n",
-            "Page_number": lambda block: f"*{block.content}*",
         }
 
         markdown_content = ""
